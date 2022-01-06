@@ -4,6 +4,8 @@
 
 
 
+
+
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -14,6 +16,9 @@
 // CODE HERE
 const sayHelloButton = document.querySelector("#say-hello-button");
 const ohMyButton = document.querySelector("#animals-button");
+const repeatButton = document.querySelector("#repeat-button");
+const repeatText = document.querySelector("#repeat-text");
+
 
 
 // PROBLEM 2
@@ -110,7 +115,20 @@ ohMyButton.addEventListener('click', ohMy);
 
 const repeatMyParam = () => {
     //YOUR CODE HERE
+    axios.get('http://localhost:3000/repeat/finally got it')
+        .then((res)=>{
+            console.log(res.data);
+            repeatText.style.display = 'block';
+            repeatText.style.backgroundColor = 'orange';
+            repeatText.textContent = res.data;
+        
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
 }
+
+repeatButton.addEventListener("click", repeatMyParam);
 
 // PROBLEM 7
 /*
@@ -120,6 +138,9 @@ const repeatMyParam = () => {
 */
 
 // Code in the repeatMyParam function above
+
+
+
 
 
 
