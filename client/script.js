@@ -4,9 +4,6 @@
 
 
 
-
-
-
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -20,6 +17,9 @@ const ohMyButton = document.querySelector("#animals-button");
 const repeatButton = document.querySelector("#repeat-button");
 const queryButton = document.querySelector("#query-button");
 const repeatText = document.querySelector("#repeat-text");
+const createForm = document.querySelector("#add-food");
+const deleteFood = document.querySelector("#clear-button");
+const foodList = document.querySelector("#food-list");
 
 
 
@@ -194,8 +194,11 @@ queryButton.addEventListener("click", queryTest);
     In the function that you wrote for Problem 8, change the URL to test a couple different scenarios. 
 
     1: Send no queries on the URL -- what happened? 
+        A message pops up saying "You sent an empty query!"
 
     2: Send more than 1 query on the URL -- what happened? 
+        It attached the additional query to the value of the first one 
+            I used name=bananas and then name=values so message was "You sent query: name with value: bananas/?=apples!"
 */
 
 // Edit code in Problem 8
@@ -226,3 +229,36 @@ queryButton.addEventListener("click", queryTest);
 */
 
 // CODE HERE 
+
+function clearFood(){
+    console.log("its working");
+    foodList.innerHTML = ` `;
+}
+
+
+function createFood(event){
+
+    event.preventDefault();
+    let foodInput = document.querySelector("#food-text");
+    let body = {
+        newFood: foodInput.value
+    }
+    axios.post('http://localhost:3000/food', body)
+        .then((res)=>{
+            console.log(res.data);
+
+            //let formData = document.createElement("p");
+            foodList.textContent = res.data;
+            document.body.appendChild(foodlist);
+        })
+        .catch((error)=>{
+            console.log("You done messed up.");
+        })
+
+        foodInput.value = '';
+}
+
+
+
+createForm.addEventListener("submit", createFood);
+deleteFood.addEventListener("click", clearFood);
