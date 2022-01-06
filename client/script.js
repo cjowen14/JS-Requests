@@ -2,6 +2,8 @@
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
 
+
+
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -10,7 +12,8 @@
 */
 
 // CODE HERE
-const sayHelloButton = document.querySelector("#say-hello-button")
+const sayHelloButton = document.querySelector("#say-hello-button");
+const ohMyButton = document.querySelector("#animals-button");
 
 
 // PROBLEM 2
@@ -25,7 +28,7 @@ function colorHello(){
     sayHelloButton.classList.add("button-hover")
 }
 
-sayHelloButton.addEventListener("mouseover", colorHello);
+    sayHelloButton.addEventListener("mouseover", colorHello);
 
 
 // PROBLEM 3
@@ -80,9 +83,16 @@ sayHelloButton.addEventListener("click", sayHello);
 
 const ohMy = () => {
     // YOUR CODE HERE
+    axios.get('http://localhost:3000/animals')
+        .then((res) => {
+            console.log(res.data);
+        })
+        .catch((error) =>{
+            console.log(error);
+        })
 }
 
-document.getElementById('animals-button').addEventListener('click', ohMy)
+ohMyButton.addEventListener('click', ohMy);
 
 
 // PROBLEM 6 
