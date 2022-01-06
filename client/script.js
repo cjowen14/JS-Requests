@@ -6,6 +6,7 @@
 
 
 
+
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -17,6 +18,7 @@
 const sayHelloButton = document.querySelector("#say-hello-button");
 const ohMyButton = document.querySelector("#animals-button");
 const repeatButton = document.querySelector("#repeat-button");
+const queryButton = document.querySelector("#query-button");
 const repeatText = document.querySelector("#repeat-text");
 
 
@@ -115,7 +117,7 @@ ohMyButton.addEventListener('click', ohMy);
 
 const repeatMyParam = () => {
     //YOUR CODE HERE
-    axios.get('http://localhost:3000/repeat/finally got it')
+    axios.get('http://localhost:3000/repeat/finally')
         .then((res)=>{
             console.log(res.data);
             repeatText.style.display = 'block';
@@ -154,6 +156,17 @@ repeatButton.addEventListener("click", repeatMyParam);
 */
 
 // CODE HERE
+function queryTest (){
+    axios.get('http://localhost:3000/query-test/?name=bananas')
+        .then((res)=>{
+            console.log(res);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+}
+
+queryButton.addEventListener("click", queryTest);
 
 
 
