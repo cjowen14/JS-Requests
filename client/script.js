@@ -38,6 +38,11 @@ sayHelloButton.addEventListener("mouseover", colorHello);
 */
 
 // CODE HERE
+function uncolorHello(){
+    sayHelloButton.classList.remove("button-hover")
+}
+
+sayHelloButton.addEventListener("mouseout", uncolorHello);
 
 
 // PROBLEM 4
@@ -59,6 +64,7 @@ const sayHello = () => {
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
+sayHelloButton.addEventListener("click", sayHello);
 
 
 // PROBLEM 5 
